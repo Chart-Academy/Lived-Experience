@@ -15,6 +15,7 @@ import html
 import re
 import sys
 
+from accordion import accordionize
 from cp_modules import MODULES
 
 ROLE_CLASSES = ["r-housing", "r-benefits", "r-reentry", "r-health", "r-work", "r-lead"]
@@ -510,7 +511,7 @@ def word_files(m, logo, out_dir):
 
 def build(num):
     m = MODULES[num]
-    for path, text in ((f"modules/cp-{nn(m)}.html", module_page(m)),
+    for path, text in ((f"modules/cp-{nn(m)}.html", accordionize(module_page(m))),
                        (f"slides/cp-{nn(m)}.html", slides(m)),
                        (f"practice/cp-{nn(m)}.html", packet(m))):
         with open(path, "w", encoding="utf-8") as f:

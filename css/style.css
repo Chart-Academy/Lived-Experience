@@ -146,3 +146,17 @@ a.mod-link .go{font-size:1.4rem;color:var(--red,#D71F2D)}
 .download .meta{font-size:.9rem;color:var(--muted)}
 .download .btn{margin-left:auto}
 .mod-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px}
+
+/* Module page accordions */
+details.acc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);scroll-margin-top:120px}
+section.alt details.acc{background:#fff}
+details.acc>summary{cursor:pointer;list-style:none;padding:18px 22px;display:flex;align-items:center;gap:14px}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"+";margin-left:auto;font-size:1.8rem;line-height:1;color:var(--red)}
+details.acc[open]>summary::after{content:"–"}
+details.acc>summary:hover .acc-title{color:var(--red)}
+details.acc .acc-head{display:flex;flex-direction:column;gap:2px}
+details.acc .acc-head .eyebrow{margin:0}
+details.acc .acc-title{font-family:var(--head);text-transform:uppercase;font-size:1.6rem;line-height:1.15}
+details.acc>.acc-body{padding:4px 22px 22px;border-top:1px solid var(--line)}
+@media print{details.acc>.acc-body{display:block}}
