@@ -125,3 +125,20 @@ details.mod[open]>summary::after{content:"–"}
 .figure figcaption{font-size:.88rem;color:var(--muted);padding:8px 4px 0}
 .card-img{display:block;width:calc(100% + 44px);max-width:none;margin:-22px -22px 16px;height:auto;aspect-ratio:16/9;object-fit:cover}
 .card.course{overflow:hidden}
+
+/* Module pages */
+.crumbs{font-size:.92rem;color:var(--muted);margin-bottom:10px}
+.crumbs a{color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.flow div{border-radius:8px;padding:12px 14px;color:#fff}
+.flow b{font-family:var(--head);text-transform:uppercase;font-weight:400;display:block;font-size:1.05rem}
+.flow span{font-size:.88rem;opacity:.95}
+.flow .f-open{background:var(--tier1)}.flow .f-learn{background:var(--tier2)}.flow .f-practice{background:var(--tier3)}.flow .f-apply{background:var(--tier4)}
+@media(max-width:720px){.flow{grid-template-columns:1fr 1fr}}
+.deck-frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#11182B}
+.deck-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.download{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-left:6px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:16px 18px;margin:16px 0;flex-wrap:wrap}
+.download .file{font-family:var(--head);text-transform:uppercase;font-size:1.05rem}
+.download .meta{font-size:.9rem;color:var(--muted)}
+.download .btn{margin-left:auto}
+.mod-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:10px}
