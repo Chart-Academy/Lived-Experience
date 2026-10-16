@@ -8,11 +8,13 @@ import csv
 
 # Minutes for each block, by module length. Breaks are included so the agenda adds up to the full day.
 TIMING = {
+    4: dict(open=20, learn=70, b1=("Break", 15), practice=90, b2=None, apply=45, steps=(15, 35, 25, 15), p12=10, p3=25),
     5: dict(open=20, learn=90, b1=("Break", 15), practice=115, b2=("Break", 10), apply=50, steps=(20, 40, 30, 25), p12=15, p3=25),
     6: dict(open=20, learn=100, b1=("Lunch", 30), practice=140, b2=("Break", 10), apply=60, steps=(20, 50, 40, 30), p12=20, p3=30),
+    7: dict(open=20, learn=120, b1=("Lunch", 45), practice=160, b2=("Break", 15), apply=60, steps=(20, 60, 45, 35), p12=20, p3=30),
     8: dict(open=20, learn=130, b1=("Lunch", 45), practice=190, b2=("Break", 15), apply=80, steps=(25, 75, 55, 35), p12=35, p3=35),
 }
-WORDS = {5: "five", 6: "six", 8: "eight"}
+WORDS = {4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
 
 
 def finish(m):
@@ -25,10 +27,11 @@ def finish(m):
         dict(kind="learn", label="Learn", min=t["learn"], desc=d["learn"], agenda=d["learn"]),
         dict(kind="break", label=t["b1"][0], min=t["b1"][1], desc="", agenda="Step away, stretch, and eat"),
         dict(kind="practice", label="Practice", min=t["practice"], desc=d["practice"], agenda=d["practice"]),
-        dict(kind="break", label=t["b2"][0], min=t["b2"][1], desc="", agenda="Short break"),
+        dict(kind="break", label=(t["b2"] or ("", 0))[0], min=(t["b2"] or ("", 0))[1], desc="", agenda="Short break"),
         dict(kind="apply", label="Apply", min=t["apply"], desc="Complete and submit your assignment, then an exit ticket",
              agenda="Assignment, upload, and exit ticket"),
     ]
+    m["flow"] = [b for b in m["flow"] if b["min"]]
     for s, mins in zip(m["steps"], t["steps"]):
         s["min"] = mins
     for s, mins in zip(m["step_slides"], t["steps"]):

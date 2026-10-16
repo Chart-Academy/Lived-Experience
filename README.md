@@ -35,7 +35,7 @@ To edit a page later, open the file on GitHub, click the pencil icon, make your 
 ## To-do before launch
 
 - [ ] Replace every `href="#"` "Submit in Canvas" or "Readiness Check" link with real links.
-- [ ] Add slides and practice files for each module.
+- [x] Add slides and practice files for each module (all 16 modules are built).
 - [ ] Add a Grading page and a Final Assessment page, like the Chart Academy site has.
 - [ ] Confirm the credential pathway details with CCE and NADSP (see the notes from Claude).
 - [ ] NADSP: confirm the organization contract for the E-Badge Academy (learners can't enroll on their own), and whether the SWF course will be NADSP Accredited Education so its hours count toward the 50-hour badge.

@@ -1,22 +1,34 @@
-"""Build a Community Practitioner module from its data in cp_modules.py.
+"""Build a course module from its data in cp_modules.py (Community Practitioner) or swf_modules.py (Survivor Workforce Facilitator).
 
 Writes the five files that make up a module, following Module 1 (the finished model):
-  modules/cp-NN.html                     module page
+  modules/{cp|swf}-NN.html                     module page
   slides/cp-NN.html                      slide deck with presenter notes
   practice/cp-NN.html                    in-class packet (role cards and team worksheet)
   assignments/CP-Module-NN-Assignment.docx
   assignments/CP-Module-NN-Team-Notes.docx
 
 Usage, from the repo's root folder (needs python-docx):
-  python _course-build/build_cp_module.py 2        # one module
-  python _course-build/build_cp_module.py all      # Modules 2-8
+  python _course-build/build_module.py cp 2       # one module
+  python _course-build/build_module.py cp all     # CP Modules 2-8 (Module 1 is hand-built)
+  python _course-build/build_module.py swf all    # SWF Modules 1-8
 """
 import html
 import re
 import sys
 
 from accordion import accordionize
-from cp_modules import MODULES
+import cp_modules
+import swf_modules
+
+COURSES = {
+    "cp": dict(code="cp", prefix="CP", page="community-practitioner.html", name="Certified Community Practitioner",
+               pathway="HS-BCP pathway", modules=cp_modules.MODULES, first=2),
+    "swf": dict(code="swf", prefix="SWF", page="survivor-workforce-facilitator.html",
+                name="Certified Survivor Workforce Facilitator", pathway="NADSP DSP-I pathway",
+                modules=swf_modules.MODULES, first=1),
+}
+C = COURSES["cp"]
+MODULES = C["modules"]
 
 ROLE_CLASSES = ["r-housing", "r-benefits", "r-reentry", "r-health", "r-work", "r-lead"]
 CARD_TAGS = ["t2", "t3", "t4", "t1", "t2", "t3"]
@@ -43,8 +55,8 @@ def header(active="cp"):
 <nav aria-label="Main"><ul class="nav">
 <li><a href="../index.html">Home</a></li>
 <li><a href="../getting-started.html">Getting Started</a></li>
-<li><a href="../community-practitioner.html"{cur}>Community Practitioner</a></li>
-<li><a href="../survivor-workforce-facilitator.html">Survivor Workforce Facilitator</a></li>
+<li><a href="../community-practitioner.html"{cur if C["code"] == "cp" else ""}>Community Practitioner</a></li>
+<li><a href="../survivor-workforce-facilitator.html"{cur if C["code"] == "swf" else ""}>Survivor Workforce Facilitator</a></li>
 <li><a href="../credentials.html">Credentials</a></li>
 <li><a href="../job-search.html">Job Search</a></li>
 <li><a href="../capstone.html">Capstone</a></li>
@@ -88,9 +100,10 @@ def clock(mins):
 
 # ---------------------------------------------------------------- module page
 def module_page(m):
-    prev_link = f'<a class="btn ghost" href="cp-{m["num"] - 1:02d}.html">← Module {m["num"] - 1:02d}</a>'
+    prev_link = (f'<a class="btn ghost" href="{C["code"]}-{m["num"] - 1:02d}.html">← Module {m["num"] - 1:02d}</a>'
+                 if m["num"] > 1 else f'<a class="btn ghost" href="../{C["page"]}">← Course overview</a>')
     nxt = MODULES.get(m["num"] + 1)
-    next_link = (f'<a class="btn ghost" href="cp-{m["num"] + 1:02d}.html">Module {m["num"] + 1:02d} · {nxt["title"]} →</a>'
+    next_link = (f'<a class="btn ghost" href="{C["code"]}-{m["num"] + 1:02d}.html">Module {m["num"] + 1:02d} · {nxt["title"]} →</a>'
                  if nxt else '<a class="btn ghost" href="../job-search.html">Next: Job Search Support →</a>')
     flow = "\n".join(
         f'    <div class="f-{b["kind"]}"><b>{b["label"]} · {b["min"]} min</b><span>{b["desc"]}</span></div>'
@@ -119,14 +132,14 @@ def module_page(m):
 
 <main>
 <div class="hero"><div class="wrap">
-  <p class="crumbs"><a href="../community-practitioner.html">Certified Community Practitioner</a> › <a href="../community-practitioner.html#modules">Modules</a> › Module {nn(m)}</p>
+  <p class="crumbs"><a href="../{C["page"]}">{C["name"]}</a> › <a href="../{C["page"]}#modules">Modules</a> › Module {nn(m)}</p>
   <p class="eyebrow">Module {nn(m)} · {m["hours"]} hours · Learn → Practice → Apply</p>
   <h1>{m["title"]}</h1>
   <p class="lead">{m["lead"]}</p>
   <div class="btns">
     <a class="btn" href="#slides">Class slides</a>
     <a class="btn ghost" href="#assignment">Assignment</a>
-    <a class="btn ghost" href="../practice/cp-{nn(m)}.html">In-class packet</a>
+    <a class="btn ghost" href="../practice/{C["code"]}-{nn(m)}.html">In-class packet</a>
   </div>
 </div></div>
 
@@ -151,9 +164,9 @@ def module_page(m):
 <section class="alt" id="slides"><div class="wrap">
   <p class="eyebrow">Learn</p>
   <h2>Class slides</h2>
-  <div class="deck-frame"><iframe src="../slides/cp-{nn(m)}.html" title="Module {m["num"]} class slides" loading="lazy" allowfullscreen></iframe></div>
+  <div class="deck-frame"><iframe src="../slides/{C["code"]}-{nn(m)}.html" title="Module {m["num"]} class slides" loading="lazy" allowfullscreen></iframe></div>
   <div class="btns">
-    <a class="btn" href="../slides/cp-{nn(m)}.html" target="_blank" rel="noopener">Open slides full screen</a>
+    <a class="btn" href="../slides/{C["code"]}-{nn(m)}.html" target="_blank" rel="noopener">Open slides full screen</a>
   </div>
   <p class="small" style="margin-top:12px"><strong>Instructors:</strong> open the slides full screen. Use the arrow keys to move, press <strong>N</strong> for presenter notes, and press <strong>F</strong> for full screen.</p>
 </div></section>
@@ -171,9 +184,9 @@ def module_page(m):
   </ol>
   <div class="download">
     <div><div class="file">Team Notes: {m["team_notes_title"]}</div><div class="meta">Word document (.docx) · one note-taker per team, or upload it to Google Docs and share it so the team can type together</div></div>
-    <a class="btn" href="../assignments/CP-Module-{nn(m)}-Team-Notes.docx" download>Download team notes</a>
+    <a class="btn" href="../assignments/{C["prefix"]}-Module-{nn(m)}-Team-Notes.docx" download>Download team notes</a>
   </div>{extra_dl}
-  <p class="small">Instructors: print the role cards and team worksheet from the <a href="../practice/cp-{nn(m)}.html">in-class packet</a>.</p>
+  <p class="small">Instructors: print the role cards and team worksheet from the <a href="../practice/{C["code"]}-{nn(m)}.html">in-class packet</a>.</p>
 </div></section>
 
 <section class="alt" id="assignment"><div class="wrap">
@@ -185,14 +198,14 @@ def module_page(m):
   </div>
 
   <div class="download">
-    <div><div class="file">CP Module {nn(m)} Assignment</div><div class="meta">Word document (.docx) · opens in Word, Google Docs, or Pages</div></div>
-    <a class="btn" href="../assignments/CP-Module-{nn(m)}-Assignment.docx" download>Download the assignment</a>
+    <div><div class="file">{C["prefix"]} Module {nn(m)} Assignment</div><div class="meta">Word document (.docx) · opens in Word, Google Docs, or Pages</div></div>
+    <a class="btn" href="../assignments/{C["prefix"]}-Module-{nn(m)}-Assignment.docx" download>Download the assignment</a>
   </div>
 
   <h3>How to submit</h3>
   <ol>
     <li>Download the assignment and type your answers into the shaded boxes. Use your team notes for Part 2.</li>
-    <li>Save the file with your name, for example <em>CP-Module-{nn(m)}-Your-Name.docx</em>.</li>
+    <li>Save the file with your name, for example <em>{C["prefix"]}-Module-{nn(m)}-Your-Name.docx</em>.</li>
     <li>Upload it to the Module {m["num"]} assignment in Canvas before you leave class. Working on paper? Upload a clear photo of each page.</li>
   </ol>
   <p><a class="btn" href="#">Submit in Canvas</a> <span class="small">(link to be added)</span></p>
@@ -208,7 +221,7 @@ def module_page(m):
 <section><div class="wrap">
   <div class="mod-nav">
     {prev_link}
-    <a class="btn ghost" href="../community-practitioner.html#modules">All modules</a>
+    <a class="btn ghost" href="../{C["page"]}#modules">All modules</a>
     {next_link}
   </div>
 </div></section>
@@ -242,10 +255,10 @@ def slides(m):
     out.append(f'''<!-- 1 -->
 <section class="slide title">
   <img class="logo" src="../images/chart-logo-icon.png" alt="Chart Academy logo">
-  <p class="eyebrow">Certified Community Practitioner · Module {nn(m)} · {m["hours"]} hours</p>
+  <p class="eyebrow">{C["name"]} · Module {nn(m)} · {m["hours"]} hours</p>
   <h1>{m["slide_title_html"]}</h1>
   <p style="font-size:34px;max-width:900px">{m["subtitle"]}</p>
-  <div class="foot"><span>Chart Academy · in partnership with IRSJA</span><span>HS-BCP pathway</span></div>
+  <div class="foot"><span>Chart Academy · in partnership with IRSJA</span><span>{C["pathway"]}</span></div>
   <aside class="notes">{m["title_notes"]}</aside>
 </section>''')
     # 2 Agenda
@@ -337,8 +350,8 @@ def slides(m):
 </div></div>
 
 <div class="controls">
-  <a href="../modules/cp-{nn(m)}.html" title="Back to the module page">Module</a>
-  <a href="../practice/cp-{nn(m)}.html" title="Open the in-class packet">Packet</a>
+  <a href="../modules/{C["code"]}-{nn(m)}.html" title="Back to the module page">Module</a>
+  <a href="../practice/{C["code"]}-{nn(m)}.html" title="Open the in-class packet">Packet</a>
   <button class="toggle-notes" title="Presenter notes (N)">Notes</button>
   <button class="prev" aria-label="Previous slide">←</button>
   <span class="count"></span>
@@ -381,12 +394,12 @@ def packet(m):
 <main class="sheet">
   <div class="sheet-tools">
     <a class="btn" href="javascript:window.print()">Print this packet</a>
-    <a class="btn ghost" href="../modules/cp-{nn(m)}.html">Back to Module {m["num"]}</a>
+    <a class="btn ghost" href="../modules/{C["code"]}-{nn(m)}.html">Back to Module {m["num"]}</a>
   </div>
 
   <div class="sheet-head">
     <div>
-      <p class="eyebrow">Certified Community Practitioner · Module {nn(m)} · In-class packet</p>
+      <p class="eyebrow">{C["name"]} · Module {nn(m)} · In-class packet</p>
       <h1>{m["activity_title"]}</h1>
     </div>
     <img src="../images/chart-logo-icon.png" alt="Chart Academy logo">
@@ -436,7 +449,7 @@ def word_files(m, logo, out_dir):
     c = m["case"]
     # Assignment
     k = Kit(logo)
-    k.header(f"CERTIFIED COMMUNITY PRACTITIONER · MODULE {nn(m)} · ASSIGNMENT", strip_tags(m["title"]))
+    k.header(f"{C['name'].upper()} · MODULE {nn(m)} · ASSIGNMENT", strip_tags(m["title"]))
     k.name_date()
     k.h2("About this assignment")
     k.para(strip_tags(a["intro"]) + " You complete it in class. There is no homework.")
@@ -470,12 +483,12 @@ def word_files(m, logo, out_dir):
                     qn_ += 1
                 k.grid(item["columns"], item["widths"], item["rows"], item.get("h", 0.55), item.get("first_col"))
     k.rubric(a["rubric_full"])
-    k.footer(f"Chart Academy Workforce Credentialing · Certified Community Practitioner · Module {nn(m)} Assignment")
-    k.save(f"{out_dir}/CP-Module-{nn(m)}-Assignment.docx")
+    k.footer(f"Chart Academy Workforce Credentialing · {C['name']} · Module {nn(m)} Assignment")
+    k.save(f"{out_dir}/{C['prefix']}-Module-{nn(m)}-Assignment.docx")
 
     # Team Notes
     t = Kit(logo)
-    t.header(f"CERTIFIED COMMUNITY PRACTITIONER · MODULE {nn(m)} · TEAM NOTES", f"Team Notes: {m['team_notes_title']}")
+    t.header(f"{C['name'].upper()} · MODULE {nn(m)} · TEAM NOTES", f"Team Notes: {m['team_notes_title']}")
     t.h2("How to use these notes")
     t.bullets([
         ("One note-taker: ", "The team lead (or a volunteer) types the team's notes here during the huddle."),
@@ -506,15 +519,15 @@ def word_files(m, logo, out_dir):
     t.h2("Presentation · 2 minutes")
     t.para("Each person says one sentence in role.", italic=True, muted=True)
     t.grid(["Role", "My sentence"], [1.8, 4.9], len(m["roles"]), 0.45, first_col=[r["name"] for r in m["roles"]])
-    t.footer(f"Chart Academy Workforce Credentialing · Certified Community Practitioner · Module {nn(m)} Team Notes")
-    t.save(f"{out_dir}/CP-Module-{nn(m)}-Team-Notes.docx")
+    t.footer(f"Chart Academy Workforce Credentialing · {C['name']} · Module {nn(m)} Team Notes")
+    t.save(f"{out_dir}/{C['prefix']}-Module-{nn(m)}-Team-Notes.docx")
 
 
 def build(num):
     m = MODULES[num]
-    for path, text in ((f"modules/cp-{nn(m)}.html", accordionize(module_page(m))),
-                       (f"slides/cp-{nn(m)}.html", slides(m)),
-                       (f"practice/cp-{nn(m)}.html", packet(m))):
+    for path, text in ((f"modules/{C['code']}-{nn(m)}.html", accordionize(module_page(m))),
+                       (f"slides/{C['code']}-{nn(m)}.html", slides(m)),
+                       (f"practice/{C['code']}-{nn(m)}.html", packet(m))):
         with open(path, "w", encoding="utf-8") as f:
             f.write(text)
     word_files(m, "images/chart-logo-icon.png", "assignments")
@@ -524,6 +537,9 @@ def build(num):
 
 
 if __name__ == "__main__":
-    arg = sys.argv[1] if len(sys.argv) > 1 else "all"
-    for n in (sorted(k for k in MODULES if k >= 2) if arg == "all" else [int(arg)]):
+    course = sys.argv[1] if len(sys.argv) > 1 else "cp"
+    arg = sys.argv[2] if len(sys.argv) > 2 else "all"
+    C = COURSES[course]
+    MODULES = C["modules"]
+    for n in (sorted(k for k in MODULES if k >= C["first"]) if arg == "all" else [int(arg)]):
         build(n)

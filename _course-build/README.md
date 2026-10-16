@@ -65,7 +65,20 @@ python _course-build/make_cp01_docx.py assignments/CP-Module-01-Assignment.docx 
 python _course-build/make_cp01_team_notes.py assignments/CP-Module-01-Team-Notes.docx images/chart-logo-icon.png
 ```
 
-For a new module, copy a script, change the text, and save it as `make_cp02_docx.py` and so on. The scripts use fixed table widths and put Word's table settings in the order Word expects, so the files open cleanly in Word, Google Docs, and Pages.
+Module 1 of Community Practitioner was built by hand with the two scripts above. Every other module is generated from data:
+
+- `cp_modules.py` holds the content for Community Practitioner Modules 2–8.
+- `swf_modules.py` holds the content for Survivor Workforce Facilitator Modules 1–8.
+- `build_module.py` writes all five files for a module (page, slides, packet, assignment, team notes). `docx_kit.py` and `accordion.py` are its helpers.
+
+To change a module, edit its entry in the data file and rebuild:
+
+```
+python _course-build/build_module.py cp 4      # one module
+python _course-build/build_module.py swf all   # a whole course
+```
+
+Rebuilding rewrites the module's five files, so make changes in the data file, not in the generated HTML. The Word files use fixed table widths and put Word's table settings in the order Word expects, so they open cleanly in Word, Google Docs, and Pages.
 
 ## Publishing
 
@@ -76,7 +89,7 @@ The site is published with GitHub Pages from the `main` branch. Changes go live 
 
 ## Still to do
 
-- [ ] Modules 2–8 for Community Practitioner and 1–8 for Survivor Workforce Facilitator
+- [x] Modules 2–8 for Community Practitioner and 1–8 for Survivor Workforce Facilitator
 - [ ] Replace placeholder Canvas links (`href="#"`): "Submit in Canvas" and "Start the Readiness Check"
 - [ ] Grading page and Final Assessment page
 - [ ] Teacher's edition (gather the in-class packets and presenter notes)
