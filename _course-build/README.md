@@ -78,7 +78,7 @@ python _course-build/build_module.py cp 4      # one module
 python _course-build/build_module.py swf all   # a whole course
 ```
 
-Job Search Support's Canvas activities (six worksheets, a résumé template, and a tracker) are built by `build_job_search.py`.
+Job Search Support's Canvas activities (six worksheets with agent logs, a résumé template, a tracker, and the AI Job Search Toolkit) are built by `build_job_search.py`. The six agents' starter instructions live in `job_search_agents.py`; if you change one, also update the matching Agent Lab on `job-search.html`.
 
 Rebuilding rewrites the module's five files, so make changes in the data file, not in the generated HTML. The Word files use fixed table widths and put Word's table settings in the order Word expects, so they open cleanly in Word, Google Docs, and Pages.
 

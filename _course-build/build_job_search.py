@@ -6,6 +6,7 @@ Usage, from the repo's root folder (needs python-docx):
 import csv
 
 from docx_kit import Kit
+from job_search_agents import AGENTS, AI_NOTE
 
 LOGO = "images/chart-logo-icon.png"
 OUT = "assignments"
@@ -32,6 +33,16 @@ def start(n, title, intro, submit):
     return k
 
 
+def agent_log(k, n):
+    a = AGENTS[n]
+    k.h2(f"Agent log · {a['name']}")
+    k.para("Record how you set up and checked the agent. Starter instructions are on the Job Search page and in the "
+           "AI Job Search Toolkit.", italic=True, muted=True)
+    k.grid(["", "My answer"], [2.4, 4.3], 4, 0.6,
+           first_col=["What I put in the [brackets] (no private details)", "Something the agent got wrong, or I had to check",
+                      "How I revised the instructions", "Where I checked it (link, posting, or person)"])
+
+
 def finish(k, n, rubric, name):
     k.rubric(rubric)
     k.footer(f"Chart Academy Workforce Credentialing · Job Search Support · Session {n} Canvas Activity")
@@ -56,12 +67,13 @@ k.answer_box("1. Which posting is your target role? Why does it fit your must-ha
 k.h2("Part 3 · The career ladder")
 k.answer_box("2. Which tier is your target job on (Tier 1 Entry, 2 Practitioner, 3 Leadership, 4 Enterprise)? "
              "What is the next rung, and what would it take to get there?", 1.0)
+agent_log(k, "J1")
 k.callout(*OWN)
 k.answer_box("3. Finish this sentence: “The job I'm going after is … because …”", 0.8)
 finish(k, "J1", [
     ["Five postings (Part 1)", "Five real, relevant postings with pay, schedule, and source.", "Three or four, or details missing.", "Fewer than three."],
-    ["Must-haves (Part 2)", "Clear, realistic must-haves and nice-to-haves.", "Some rows vague.", "Missing."],
-    ["Target role and ladder (questions 1–2)", "A target role that fits, placed on the ladder with a next step.", "Partly explained.", "Missing."],
+    ["Must-haves, target, and ladder (Part 2, Part 3)", "Realistic must-haves and a target role placed on the ladder with a next step.", "Partly complete.", "Missing."],
+    ["Agent log", "Career Profile Agent set up with no private details, checked, and revised.", "Log is incomplete.", "Missing."],
     ["In your own words (question 3)", "Specific and in the learner's own words.", "General.", "Missing."],
 ], "JS-J1-Target-Role.docx")
 
@@ -78,11 +90,12 @@ k.answer_box("1. Write your credential and two course competencies the way they 
              hint="(Example: “Certified Community Practitioner training, Chart Academy, 2026. HS-BCP candidate.”)")
 k.answer_box("2. If you have a gap or justice involvement, write one honest, forward-looking sentence about it. If not, write “Not needed.”",
              0.8)
-k.h2("Part 2 · AI review and your changes")
+k.h2("Part 2 · Résumé Optimizer: your changes")
 k.para("Remove your address, phone, and email before you paste your résumé into AI. Every change must still be true.",
        italic=True, muted=True)
 k.grid(["What AI suggested", "Did I use it? (Yes / Changed it / No)", "Why"], [2.6, 1.6, 2.5], 3, 0.7)
 k.answer_box("3. How did you tailor your résumé to your target posting? Name two changes.", 0.9)
+agent_log(k, "J2")
 k.callout(*OWN)
 k.answer_box("4. Finish this sentence: “The biggest change I made to my résumé was … because …”", 0.8)
 finish(k, "J2", [
@@ -130,12 +143,13 @@ k.h2("Part 2 · Scams and next steps")
 k.answer_box("1. List three red flags of a scam listing. Did you find any? Describe it without sharing the link.", 1.0)
 k.answer_box("2. Which two openings will you apply to first? Write their apply-by dates.", 0.8)
 k.answer_box("3. Set up one job alert. What search words and filters did you use?", 0.7)
+agent_log(k, "J3")
 k.callout(*OWN)
 k.answer_box("4. Finish this sentence: “I knew one listing was a scam because …” (or “A listing that looked too good to be true was …”)", 0.8)
 finish(k, "J3", [
     ["Ten openings (Part 1)", "Ten real openings, fully filled in, with ratings that match the must-haves.", "Six to nine, or ratings unclear.", "Fewer than six."],
-    ["Scam awareness (question 1)", "Three accurate red flags.", "One or two.", "Missing."],
-    ["Next steps (questions 2–3)", "Two openings with dates and a working job alert.", "Partly complete.", "Missing."],
+    ["Scams and next steps (questions 1–3)", "Three red flags, two openings with dates, and a job alert.", "Partly complete.", "Missing."],
+    ["Agent log", "Skills-to-Openings Agent set up, every ranking checked, instructions revised.", "Log is incomplete.", "Missing."],
     ["In your own words (question 4)", "Specific and in the learner's own words.", "General.", "Missing."],
 ], "JS-J3-Openings-Scorecard.docx")
 
@@ -152,12 +166,13 @@ k.h2("Part 2 · Practice and feedback")
 k.grid(["Practice", "Feedback I got", "What I'll change"], [1.6, 2.6, 2.5], 3, 0.6,
        first_col=["AI coach round 1", "AI coach round 2", "Mock interview (person)"])
 k.answer_box("1. Who did your mock interview, and what was one thing they said you did well?", 0.7)
+agent_log(k, "J4")
 k.callout(*OWN)
 k.answer_box("2. What will you share about your lived experience in an interview, and what will you keep private? Why?", 1.2)
 k.answer_box("3. Finish this sentence: “My strongest STAR story is about … because it shows …”", 0.8)
 finish(k, "J4", [
     ["STAR stories (Part 1)", "Two complete stories with a clear action and a real result.", "One complete, or results are vague.", "Missing."],
-    ["Practice and feedback (Part 2)", "Three practice rounds recorded, with changes made.", "Two rounds, or no changes.", "Missing."],
+    ["Practice, feedback, and agent log (Part 2)", "Three practice rounds recorded, with changes made, and a complete agent log.", "Two rounds, or log incomplete.", "Missing."],
     ["Lived experience choices (question 2)", "Thoughtful, safe choice about what to share and why.", "General.", "Missing."],
     ["In your own words (question 3)", "Specific and in the learner's own words.", "General.", "Missing."],
 ], "JS-J4-STAR-Interview.docx")
@@ -174,13 +189,14 @@ k.h2("Part 2 · Follow-up email and introduction")
 k.answer_box("1. Write a polite follow-up email to send one week after you apply. Include a subject line.", 1.3)
 k.grid(["Application", "Details"], [1.8, 4.9], 4, 0.4,
        first_col=["Job title and employer", "Submitted or saved?", "Date submitted, or apply-by date", "Follow-up date"])
+agent_log(k, "J5")
 k.callout(*OWN)
 k.answer_box("2. Write your 30-second introduction for an employer partner.", 1.0,
              hint="(Who you are, your credential, what you're looking for, one strength.)")
 finish(k, "J5", [
     ["Cover letter (Part 1)", "Specific to the posting, true, clear, and professional.", "Generic, or has errors.", "Missing."],
-    ["Follow-up email (question 1)", "Polite, professional, with a clear subject line.", "Partly complete.", "Missing."],
-    ["Application (table and screenshot)", "One application submitted or saved with a date, and a screenshot with private information covered.", "Missing the date or screenshot.", "Missing."],
+    ["Follow-up and application (question 1, table, screenshot)", "Professional follow-up email, and one application submitted or saved with a date and a screenshot.", "Partly complete.", "Missing."],
+    ["Agent log", "Every research source opened and checked; the letter is true and in the learner's voice.", "Log is incomplete.", "Missing."],
     ["30-second introduction (question 2)", "Clear, confident, and in the learner's own words.", "General.", "Missing."],
 ], "JS-J5-Application-Packet.docx")
 
@@ -200,12 +216,13 @@ k.grid(["", "Job search", "Credential", "Taking care of me"], [1.1, 1.9, 1.9, 1.
        first_col=["Days 1–30", "Days 31–60", "Days 61–90"])
 k.answer_box("1. Which weekly times did you block on your calendar for applications and credential steps?", 0.7)
 k.answer_box("2. Who will you check in with during the next 90 days (instructor, mentor, classmate), and how often?", 0.7)
+agent_log(k, "J6")
 k.callout(*OWN)
 k.answer_box("3. Finish this sentence: “My next three steps to get hired are …”", 0.9)
 finish(k, "J6", [
-    ["Tracker (Part 1 and upload)", "Tracker uploaded with jobs, status, and follow-up dates.", "Tracker is incomplete.", "Missing."],
-    ["90-day plan (Part 2)", "Realistic steps for job search, credential, and self-care in every period.", "Some periods missing.", "Missing."],
-    ["Calendar and support (questions 1–2)", "Calendar screenshot uploaded with weekly blocks, and a check-in plan.", "Partly complete.", "Missing."],
+    ["Tracker and calendar (Part 1 and uploads)", "Tracker with status and follow-up dates, and a calendar with weekly blocks.", "One is incomplete.", "Missing."],
+    ["90-day plan and support (Part 2)", "Realistic steps for job search, credential, and self-care, with a check-in plan.", "Some periods missing.", "Missing."],
+    ["Agent log", "Job Search Manager set up, its plan checked for conflicts, instructions revised.", "Log is incomplete.", "Missing."],
     ["In your own words (question 3)", "Specific and in the learner's own words.", "General.", "Missing."],
 ], "JS-J6-Tracker-90-Day-Plan.docx")
 
@@ -216,3 +233,24 @@ with open(f"{OUT}/JS-Job-Search-Tracker.csv", "w", newline="", encoding="utf-8")
         ["", "Community Outreach Specialist", "Example Nonprofit", "", "", "Mon–Fri days", "Y", "Saved", "", "", "", ""],
     ])
 print("saved JS-Job-Search-Tracker.csv")
+
+# ---------------------------------------------------------------- AI Job Search Toolkit
+k = Kit(LOGO)
+k.header("JOB SEARCH SUPPORT · AI JOB SEARCH TOOLKIT", "Your Six Job Search Agents")
+k.para("Save a copy of this file in your Google Drive. Fill in the [brackets] yourself, then paste the instructions into your "
+       "AI assistant (Gemini, Claude, ChatGPT, or Copilot) to start each agent. Keep your revised versions here so your agents "
+       "keep working after the course ends.")
+k.callout("Ground rules:", "Remove your address, phone, and email before sharing your résumé. Every line must describe something "
+          "you actually did. Check every fact, link, and ranking yourself. Search and apply for jobs yourself; never let AI log in "
+          "to a job site or apply for you. Never pay a fee or share bank details or your Social Security number to get a job.",
+          "FFF8E1", "8A6900")
+for n, a in AGENTS.items():
+    k.h2(f"{n} · {a['name']}")
+    k.para(a["does"], italic=True, muted=True)
+    k.para(f"Tools: {a['tools']} · {a['adapted']}", muted=True, size=9.5)
+    for line in (a["prompt"] + "\n\n" + AI_NOTE).split("\n"):
+        k.para(line, size=10, after=1)
+    k.answer_box("My version (what I put in the brackets, and what I changed after testing):", 1.0)
+k.footer("Chart Academy Workforce Credentialing · Job Search Support · AI Job Search Toolkit")
+k.save(f"{OUT}/JS-AI-Job-Search-Toolkit.docx")
+print("saved JS-AI-Job-Search-Toolkit.docx")

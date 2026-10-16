@@ -160,3 +160,7 @@ details.acc .acc-head .eyebrow{margin:0}
 details.acc .acc-title{font-family:var(--head);text-transform:uppercase;font-size:1.6rem;line-height:1.15}
 details.acc>.acc-body{padding:4px 22px 22px;border-top:1px solid var(--line)}
 @media print{details.acc>.acc-body{display:block}}
+
+/* Agent starter instructions (Job Search) */
+pre.prompt{white-space:pre-wrap;word-wrap:break-word;background:#1F2A44;color:#F6F8FC;border-radius:8px;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.5;margin:8px 0 14px;overflow-x:auto}
+pre.prompt .ai-note{color:#F7C9CD}
