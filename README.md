@@ -5,7 +5,7 @@ Offered by Chart Academy in partnership with IRSJA.
 A static course website for two 80-hour courses:
 
 - **Certified Community Practitioner**, leading to HS-BCP (CCE)
-- **Certified Survivor Workforce Facilitator**, leading to NADSP DSP-I
+- **Certified Survivor Workforce Facilitator** (women-centered), leading to NADSP DSP-I
 
 Each course has 45 hours of content, 15 hours of job search support, and a 20-hour capstone.
 
@@ -38,3 +38,4 @@ To edit a page later, open the file on GitHub, click the pencil icon, make your 
 - [ ] Add slides and practice files for each module.
 - [ ] Add a Grading page and a Final Assessment page, like the Chart Academy site has.
 - [ ] Confirm the credential pathway details with CCE and NADSP (see the notes from Claude).
+- [ ] NADSP: confirm the organization contract for the E-Badge Academy (learners can't enroll on their own), and whether the SWF course will be NADSP Accredited Education so its hours count toward the 50-hour badge.
