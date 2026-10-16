@@ -1,0 +1,90 @@
+/* Chart Academy · slide decks
+   Each deck is one HTML file in /slides. Each <section class="slide"> is one slide.
+   Presenter notes go in <aside class="notes"> inside a slide (press N to show them). */
+:root{
+  --ink:#1F2A44; --muted:#5A6378; --red:#D71F2D; --blue:#3A56A6; --cream:#F6F8FC; --line:#DCE2EE;
+  --tier1:#5C5450; --tier2:#6F87A6; --tier3:#3F6B50; --tier4:#C0603A;
+  --head:"Oswald","Arial Narrow","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#11182B;color:var(--ink);font-family:var(--body)}
+
+/* The stage is always 1280x720 and is scaled to fit the window */
+.deck{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage{width:1280px;height:720px;position:relative;transform-origin:center center;flex:none}
+.slide{position:absolute;inset:0;background:#fff;padding:64px 80px 70px;display:none;flex-direction:column;border-top:10px solid var(--red);font-size:30px;line-height:1.4}
+.slide.active{display:flex}
+.slide::after{content:"";position:absolute;left:80px;right:80px;bottom:46px;border-top:1px solid var(--line)}
+.slide .foot{position:absolute;left:80px;right:80px;bottom:14px;display:flex;justify-content:space-between;font-size:16px;color:var(--muted)}
+.slide .foot img{height:24px;vertical-align:middle;margin-right:8px}
+
+.slide h1,.slide h2,.slide h3{font-family:var(--head);text-transform:uppercase;line-height:1.05;margin:0 0 .45em;letter-spacing:.01em}
+.slide h1{font-size:72px}
+.slide h2{font-size:52px}
+.slide h3{font-size:32px;color:var(--blue)}
+.slide p{margin:0 0 .6em}
+.slide ul,.slide ol{margin:0;padding-left:1.1em}
+.slide li{margin:0 0 .4em}
+.eyebrow{font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-size:22px;margin-bottom:10px}
+.small{font-size:22px;color:var(--muted)}
+
+/* Title slide */
+.slide.title{background:var(--ink);color:#fff;justify-content:center;border-top-color:var(--red)}
+.slide.title .eyebrow{color:#C9D3E8}
+.slide.title .foot{color:#C9D3E8}
+.slide.title::after{border-color:#3A4766}
+.slide.title .logo{position:absolute;right:80px;top:64px;height:110px;background:#fff;border-radius:12px;padding:10px}
+
+/* Section-break slides: Learn / Practice / Apply */
+.slide.break{justify-content:center;color:#fff;border-top:0}
+.slide.break.learn{background:var(--tier2)}
+.slide.break.practice{background:var(--tier3)}
+.slide.break.apply{background:var(--tier4)}
+.slide.break h2{font-size:96px;margin:0}
+.slide.break p{font-size:34px;max-width:900px}
+.slide.break .foot{color:#fff}
+.slide.break::after{border-color:rgba(255,255,255,.35)}
+
+/* Layout helpers */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.box{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-size:24px}
+.box h3{font-size:26px;margin-bottom:.3em}
+.box.c1{border-top:8px solid var(--tier1)}.box.c2{border-top:8px solid var(--tier2)}.box.c3{border-top:8px solid var(--tier3)}.box.c4{border-top:8px solid var(--tier4)}
+.tbl{width:100%;border-collapse:collapse;font-size:22px}
+.tbl th{background:var(--blue);color:#fff;font-family:var(--head);text-transform:uppercase;font-weight:400;text-align:left;padding:10px 14px}
+.tbl td{border-bottom:1px solid var(--line);padding:10px 14px;vertical-align:top}
+.quote{font-size:40px;font-family:var(--head);text-transform:none;border-left:10px solid var(--tier3);padding:10px 0 10px 30px;margin:20px 0}
+.own-words{background:#EDF3EE;border-left:10px solid var(--tier3);padding:24px 30px;border-radius:0 12px 12px 0}
+.own-words b{font-family:var(--head);text-transform:uppercase;font-weight:400;display:block;font-size:24px;color:var(--tier3)}
+.warn{background:#FFF8E1;border-left:10px solid #B58A00;padding:18px 26px;border-radius:0 12px 12px 0;font-size:24px}
+.timer{display:inline-block;background:var(--ink);color:#fff;font-family:var(--head);padding:4px 14px;border-radius:30px;font-size:22px;margin-left:10px;vertical-align:middle}
+.agenda{list-style:none;padding:0;display:grid;gap:12px}
+.agenda li{display:flex;gap:20px;align-items:center;background:var(--cream);border-radius:10px;padding:12px 20px;font-size:26px}
+.agenda .t{font-family:var(--head);min-width:150px;color:var(--muted)}
+.agenda .k{font-family:var(--head);text-transform:uppercase;color:#fff;padding:2px 12px;border-radius:6px;font-size:20px;min-width:120px;text-align:center}
+.k.learn{background:var(--tier2)}.k.practice{background:var(--tier3)}.k.apply{background:var(--tier4)}.k.open{background:var(--tier1)}
+
+/* Presenter notes: hidden until N is pressed */
+.notes{display:none}
+body.show-notes .notes{display:block;position:fixed;left:0;right:0;bottom:0;max-height:38vh;overflow:auto;background:#FFFBEA;color:#3B3200;border-top:4px solid #B58A00;padding:14px 22px;font-size:17px;line-height:1.5;z-index:5}
+body.show-notes .slide:not(.active) .notes{display:none}
+.notes::before{content:"Presenter notes (press N to hide)";display:block;font-weight:700;margin-bottom:4px}
+
+/* Controls */
+.controls{position:fixed;right:14px;bottom:12px;display:flex;gap:6px;align-items:center;z-index:6;font:14px var(--body);color:#C9D3E8}
+.controls button,.controls a{background:#2A3555;color:#fff;border:0;border-radius:6px;padding:7px 12px;font:inherit;cursor:pointer;text-decoration:none}
+.controls button:hover,.controls a:hover{background:var(--red)}
+.progress{position:fixed;left:0;top:0;height:4px;background:var(--red);z-index:6;transition:width .2s}
+body.show-notes .controls{bottom:calc(38vh + 12px)}
+
+/* Print: one slide per landscape page, notes printed underneath on a second page is too much, so notes are left out */
+@media print{
+  @page{size:1280px 720px;margin:0}
+  html,body{background:#fff;height:auto}
+  .deck{position:static;display:block}
+  .stage{transform:none!important;width:auto;height:auto}
+  .slide{display:flex!important;position:relative;width:1280px;height:720px;page-break-after:always;break-after:page}
+  .controls,.progress,.notes{display:none!important}
+}
