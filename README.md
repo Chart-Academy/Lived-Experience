@@ -9,19 +9,23 @@ A static course website for two 80-hour courses:
 
 Each course has 45 hours of content, 15 hours of job search support, and a 20-hour capstone.
 
+**Picking the work back up?** Start with [`_course-build/PROJECT-NOTES.md`](_course-build/PROJECT-NOTES.md): what's built,
+Canvas and Readiness Check links, the grading system, how to change things, and what's still to do.
+
 ## Files
 
 | File | Page |
 |---|---|
 | `index.html` | Home: both courses, the 80-hour breakdown, and the career ladder |
-| `getting-started.html` | Day one: accounts, Readiness Check, and ground rules |
-| `community-practitioner.html` | Course 1 overview and its 8 modules |
-| `survivor-workforce-facilitator.html` | Course 2 overview and its 8 modules |
+| `getting-started.html` | Day one: accounts, ground rules, and the Day One Readiness Check for each course |
+| `community-practitioner.html` | Course 1 overview, its 8 module cards, and the Final Readiness Check |
+| `survivor-workforce-facilitator.html` | Course 2 overview, its 8 module cards, and the Final Readiness Check |
+| `credentials.html` | HS-BCP and DSP-I details and the path to the credential |
 | `job-search.html`, `modules/js-j1.html` to `js-j6.html` | Job Search Support overview, and one page per session with its AI agent and Canvas activity |
-| `job-search.html` | Shared 15-hour job search sessions |
-| `capstone.html` | 20-hour capstone for both courses |
-| `css/style.css` | Shared styles in Chart Academy brand colors (red #D71F2D, blue #3A56A6) |
-| `images/` | Chart Academy logo and the two program infographics |
+| `capstone.html` | 20-hour capstone for both courses, with each capstone's rubric |
+| `modules/`, `slides/`, `practice/`, `assignments/` | Module pages, class slides, in-class packets, and Word assignments |
+| `css/`, `js/`, `images/` | Shared styles (red #D71F2D, blue #3A56A6), scripts, logo, and graphics |
+| `_course-build/` | Build scripts and course data (see its README and PROJECT-NOTES) |
 
 ## Publish on GitHub Pages (about 10 minutes, no coding)
 
@@ -33,10 +37,6 @@ Each course has 45 hours of content, 15 hours of job search support, and a 20-ho
 
 To edit a page later, open the file on GitHub, click the pencil icon, make your change, and click **Commit changes**. The site updates within a minute or two.
 
-## To-do before launch
+## To-do
 
-- [ ] Replace every `href="#"` "Submit in Canvas" or "Readiness Check" link with real links.
-- [x] Add slides and practice files for each module (all 16 modules are built).
-- [ ] Add a Grading page and a Final Assessment page, like the Chart Academy site has.
-- [ ] Confirm the credential pathway details with CCE and NADSP (see the notes from Claude).
-- [ ] NADSP: confirm the organization contract for the E-Badge Academy (learners can't enroll on their own), and whether the SWF course will be NADSP Accredited Education so its hours count toward the 50-hour badge.
+See the checklist in [`_course-build/PROJECT-NOTES.md`](_course-build/PROJECT-NOTES.md#still-to-do-final-touches).
