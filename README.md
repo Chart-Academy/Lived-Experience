@@ -17,6 +17,7 @@ Each course has 45 hours of content, 15 hours of job search support, and a 20-ho
 | `getting-started.html` | Day one: accounts, Readiness Check, and ground rules |
 | `community-practitioner.html` | Course 1 overview and its 8 modules |
 | `survivor-workforce-facilitator.html` | Course 2 overview and its 8 modules |
+| `job-search.html`, `modules/js-j1.html` to `js-j6.html` | Job Search Support overview, and one page per session with its AI agent and Canvas activity |
 | `job-search.html` | Shared 15-hour job search sessions |
 | `capstone.html` | 20-hour capstone for both courses |
 | `css/style.css` | Shared styles in Chart Academy brand colors (red #D71F2D, blue #3A56A6) |
