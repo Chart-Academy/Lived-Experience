@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">A job seeker using AI to plan her job search</title>
+<desc id="d">Illustration of a woman at a laptop with an AI sparkle, a résumé, a magnifying glass over job listings, and a calendar.</desc>
+
+<rect width="640" height="360" fill="#EEF2FA"/>
+<circle cx="560" cy="70" r="120" fill="#DDE5F4"/>
+<rect x="0" y="300" width="640" height="60" fill="#D5DDEE"/>
+<!-- résumé -->
+<g transform="translate(60 50)">
+  <rect width="120" height="150" rx="8" fill="#fff" stroke="#3A56A6" stroke-width="4"/>
+  <circle cx="30" cy="32" r="14" fill="#3A56A6"/>
+  <rect x="52" y="22" width="52" height="8" rx="4" fill="#1F2A44"/><rect x="52" y="36" width="36" height="6" rx="3" fill="#9AA6C2"/>
+  <g fill="#9AA6C2"><rect x="16" y="64" width="88" height="6" rx="3"/><rect x="16" y="80" width="76" height="6" rx="3"/>
+  <rect x="16" y="100" width="88" height="6" rx="3"/><rect x="16" y="116" width="64" height="6" rx="3"/></g>
+  <circle cx="104" cy="136" r="18" fill="#3F6B50"/><path d="M95 136l6 6 12-12" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<!-- listings + magnifier -->
+<g transform="translate(470 120)">
+  <g fill="#fff" stroke="#3A56A6" stroke-width="3">
+    <rect width="110" height="30" rx="6"/><rect y="40" width="110" height="30" rx="6"/><rect y="80" width="110" height="30" rx="6"/>
+  </g>
+  <rect x="10" y="12" width="60" height="6" rx="3" fill="#1F2A44"/><rect x="10" y="52" width="70" height="6" rx="3" fill="#1F2A44"/><rect x="10" y="92" width="50" height="6" rx="3" fill="#1F2A44"/>
+  <circle cx="90" cy="15" r="7" fill="#3F6B50"/><circle cx="90" cy="55" r="7" fill="#3F6B50"/>
+  <path d="M84 89l12 12M96 89l-12 12" stroke="#D71F2D" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="-30" cy="70" r="26" fill="none" stroke="#1F2A44" stroke-width="7"/><path d="M-11 89l20 20" stroke="#1F2A44" stroke-width="9" stroke-linecap="round"/>
+</g>
+<!-- calendar -->
+<g transform="translate(470 30)">
+  <rect width="78" height="64" rx="8" fill="#fff" stroke="#3A56A6" stroke-width="3"/><rect width="78" height="18" rx="8" fill="#D71F2D"/>
+  <g fill="#DDE5F4"><rect x="10" y="26" width="14" height="10"/><rect x="32" y="26" width="14" height="10"/><rect x="54" y="26" width="14" height="10"/>
+  <rect x="10" y="44" width="14" height="10"/><rect x="54" y="44" width="14" height="10"/></g><rect x="32" y="44" width="14" height="10" fill="#3F6B50"/>
+</g>
+<!-- desk + laptop -->
+<rect x="190" y="236" width="270" height="14" rx="4" fill="#1F2A44"/>
+<rect x="208" y="250" width="12" height="56" fill="#1F2A44"/><rect x="430" y="250" width="12" height="56" fill="#1F2A44"/>
+<path d="M300 236l14-74h110l-14 74z" fill="#3A56A6"/><rect x="290" y="232" width="140" height="6" rx="3" fill="#1F2A44"/>
+<path d="M360 182C362.4 195.6 362.4 195.6 376 198C362.4 200.4 362.4 200.4 360 214C357.6 200.4 357.6 200.4 344 198C357.6 195.6 357.6 195.6 360 182z" fill="#fff"/>
+<!-- person -->
+<circle cx="250" cy="118" r="30" fill="#8A5A3C"/>
+<path d="M218 116c0-30 18-44 34-44s34 14 34 40c-6-10-20-18-34-18s-26 10-34 22z" fill="#1F2A44"/>
+<path d="M206 236c0-50 20-82 46-82s46 32 46 82z" fill="#D71F2D"/>
+<path d="M286 196l40 18" stroke="#8A5A3C" stroke-width="12" stroke-linecap="round"/>
+<path d="M330 48C333.3 66.7 333.3 66.7 352 70C333.3 73.3 333.3 73.3 330 92C326.7 73.3 326.7 73.3 308 70C326.7 66.7 326.7 66.7 330 48z" fill="#D71F2D"/><path d="M372 92C373.8 102.2 373.8 102.2 384 104C373.8 105.8 373.8 105.8 372 116C370.2 105.8 370.2 105.8 360 104C370.2 102.2 370.2 102.2 372 92z" fill="#3A56A6"/><path d="M300 31C301.35 38.65 301.35 38.65 309 40C301.35 41.35 301.35 41.35 300 49C298.65 41.35 298.65 41.35 291 40C298.65 38.65 298.65 38.65 300 31z" fill="#3A56A6"/>
+
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">J1 Career Profile Agent</title>
+<desc id="d">Icon illustration for the Career Profile Agent.</desc>
+
+<rect width="640" height="360" fill="#3A56A6"/>
+<circle cx="560" cy="60" r="140" fill="#fff" opacity=".08"/><circle cx="70" cy="330" r="110" fill="#fff" opacity=".08"/>
+<g transform="translate(320 185)"><circle cx="0" cy="-30" r="34" fill="#fff"/><path d="M-60 70c0-50 26-74 60-74s60 24 60 74z" fill="#fff"/><g transform="translate(62 -50)"><path d="M0 -26C3.9 -3.9 3.9 -3.9 26 0C3.9 3.9 3.9 3.9 0 26C-3.9 3.9 -3.9 3.9 -26 0C-3.9 -3.9 -3.9 -3.9 0 -26z" fill="#F7C9CD"/></g></g>
+<text x="32" y="58" font-family="Oswald, Arial, sans-serif" font-size="40" font-weight="600" fill="#fff">J1</text>
+</svg>

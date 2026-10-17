@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">J5 Application Assistant</title>
+<desc id="d">Icon illustration for the Application Assistant.</desc>
+
+<rect width="640" height="360" fill="#3A56A6"/>
+<circle cx="560" cy="60" r="140" fill="#fff" opacity=".08"/><circle cx="70" cy="330" r="110" fill="#fff" opacity=".08"/>
+<g transform="translate(320 185)"><path d="M-90 -10l170-70-50 160-40-60z" fill="#fff"/><path d="M-10 20l90-100-50 100z" fill="#1F2A44" opacity=".35"/><path d="M-10 20v50l26-30" fill="#fff"/></g>
+<text x="32" y="58" font-family="Oswald, Arial, sans-serif" font-size="40" font-weight="600" fill="#fff">J5</text>
+</svg>

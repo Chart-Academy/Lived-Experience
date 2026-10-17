@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">J3 Skills-to-Openings Agent</title>
+<desc id="d">Icon illustration for the Skills-to-Openings Agent.</desc>
+
+<rect width="640" height="360" fill="#B5522B"/>
+<circle cx="560" cy="60" r="140" fill="#fff" opacity=".08"/><circle cx="70" cy="330" r="110" fill="#fff" opacity=".08"/>
+<g transform="translate(320 185)"><g fill="#fff"><rect x="-80" y="-70" width="120" height="34" rx="8"/><rect x="-80" y="-24" width="120" height="34" rx="8"/><rect x="-80" y="22" width="120" height="34" rx="8"/></g><circle cx="40" cy="10" r="38" fill="none" stroke="#1F2A44" stroke-width="10"/><path d="M68 38l26 26" stroke="#1F2A44" stroke-width="13" stroke-linecap="round"/></g>
+<text x="32" y="58" font-family="Oswald, Arial, sans-serif" font-size="40" font-weight="600" fill="#fff">J3</text>
+</svg>
