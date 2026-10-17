@@ -17,6 +17,7 @@ import re
 import sys
 
 from accordion import accordionize
+from canvas_links import link as canvas_link
 import cp_modules
 import swf_modules
 
@@ -208,7 +209,7 @@ def module_page(m):
     <li>Save the file with your name, for example <em>{C["prefix"]}-Module-{nn(m)}-Your-Name.docx</em>.</li>
     <li>Upload it to the Module {m["num"]} assignment in Canvas before you leave class. Working on paper? Upload a clear photo of each page.</li>
   </ol>
-  <p><a class="btn" href="#">Submit in Canvas</a> <span class="small">(link to be added)</span></p>
+  <p><a class="btn" href="{canvas_link(C['code'], f'M{nn(m)}')}" target="_blank" rel="noopener">Submit in Canvas</a> <span class="small">(opens Canvas in a new tab)</span></p>
 
   <div class="own-words"><b>In your own words</b>Write Part 3 yourself. You choose what to share, and you never have to share more than you're comfortable with.</div>
 
