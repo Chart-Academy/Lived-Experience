@@ -126,7 +126,7 @@ def module_page(m):
     <a class="btn" href="../assignments/{f["file"]}" download>{f["button"]}</a>
   </div>'''
     return HEAD.format(title=f'Module {m["num"]} · {strip_tags(m["title"])} · Chart Academy',
-                       css='<link rel="stylesheet" href="../css/style.css?v=20261016b">') + f'''
+                       css='<link rel="stylesheet" href="../css/style.css?v=20261016c">') + f'''
 <body id="top">
 {header()}
 
@@ -387,7 +387,7 @@ def packet(m):
         f'    <p style="margin-top:12px"><strong>{p}</strong></p>\n    <div class="lines">' + "<div></div>" * n + "</div>"
         for p, n in ws["plan"])
     return HEAD.format(title=f'Module {m["num"]} In-Class Packet · {strip_tags(m["title"])}',
-                       css='<link rel="stylesheet" href="../css/style.css?v=20261016b">\n<link rel="stylesheet" href="../css/practice.css?v=20261016b">') + f'''
+                       css='<link rel="stylesheet" href="../css/style.css?v=20261016c">\n<link rel="stylesheet" href="../css/practice.css?v=20261016b">') + f'''
 <body id="top">
 {header()}
 

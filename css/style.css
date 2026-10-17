@@ -185,3 +185,7 @@ pre.prompt .ai-note{color:#F7C9CD}
   .nav li:last-child a{border-bottom:0}
   .nav a[aria-current=page]{border-radius:6px}
 }
+
+/* Job Search agent cards: link to the session at the bottom of each card */
+#process .card{display:flex;flex-direction:column}
+details.mod{scroll-margin-top:90px}
