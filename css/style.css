@@ -164,3 +164,24 @@ details.acc>.acc-body{padding:4px 22px 22px;border-top:1px solid var(--line)}
 /* Agent starter instructions (Job Search) */
 pre.prompt{white-space:pre-wrap;word-wrap:break-word;background:#1F2A44;color:#F6F8FC;border-radius:8px;padding:16px 18px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.5;margin:8px 0 14px;overflow-x:auto}
 pre.prompt .ai-note{color:#F7C9CD}
+
+/* Phone menu: one-row header with a Menu button */
+.nav-toggle{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.nav-btn{display:none}
+@media(max-width:1100px){
+  .site-header .wrap{flex-wrap:nowrap;min-height:58px;gap:10px}
+  .brand{font-size:1rem}
+  .brand img{width:34px;height:auto}
+  .brand small{font-size:.68rem}
+  .nav-btn{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--head);text-transform:uppercase;letter-spacing:.04em;color:var(--navy);border:2px solid var(--blue);border-radius:8px;padding:7px 12px;font-size:.95rem;background:#fff;white-space:nowrap}
+  .nav-btn .bars,.nav-btn .bars::before,.nav-btn .bars::after{display:block;width:16px;height:2px;background:var(--navy);position:relative;content:""}
+  .nav-btn .bars::before{position:absolute;top:-5px}.nav-btn .bars::after{position:absolute;top:5px}
+  .nav-toggle:focus-visible+.nav-btn{outline:3px solid var(--red);outline-offset:2px}
+  .nav-toggle:checked+.nav-btn{background:var(--blue);color:#fff}
+  .nav-toggle:checked+.nav-btn .bars,.nav-toggle:checked+.nav-btn .bars::before,.nav-toggle:checked+.nav-btn .bars::after{background:#fff}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;padding:6px 16px 12px;background:#fff;border-bottom:4px solid var(--red);box-shadow:0 10px 20px rgba(31,42,68,.12)}
+  .nav-toggle:checked~.nav{display:flex}
+  .nav a{display:block;padding:12px 10px;font-size:1.05rem;border-bottom:1px solid var(--line);border-radius:0}
+  .nav li:last-child a{border-bottom:0}
+  .nav a[aria-current=page]{border-radius:6px}
+}

@@ -52,14 +52,14 @@ def header(active="cp"):
     cur = ' aria-current="page"'
     return f'''<header class="site-header"><div class="wrap">
 <a class="brand" href="../index.html"><img src="../images/chart-logo-icon.png" alt="Chart Academy logo"><span class="brand-text">Chart Academy<small>Workforce Credentialing · with IRSJA</small></span></a>
-<nav aria-label="Main"><ul class="nav">
+<nav aria-label="Main"><input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Show or hide the menu"><label for="nav-toggle" class="nav-btn" aria-hidden="true"><span class="bars"></span>Menu</label>
+<ul class="nav">
 <li><a href="../index.html">Home</a></li>
 <li><a href="../getting-started.html">Getting Started</a></li>
 <li><a href="../community-practitioner.html"{cur if C["code"] == "cp" else ""}>Community Practitioner</a></li>
 <li><a href="../survivor-workforce-facilitator.html"{cur if C["code"] == "swf" else ""}>Survivor Workforce Facilitator</a></li>
 <li><a href="../credentials.html">Credentials</a></li>
 <li><a href="../job-search.html">Job Search</a></li>
-<li><a href="../capstone.html">Capstone</a></li>
 </ul></nav>
 </div></header>'''
 
@@ -126,7 +126,7 @@ def module_page(m):
     <a class="btn" href="../assignments/{f["file"]}" download>{f["button"]}</a>
   </div>'''
     return HEAD.format(title=f'Module {m["num"]} · {strip_tags(m["title"])} · Chart Academy',
-                       css='<link rel="stylesheet" href="../css/style.css">') + f'''
+                       css='<link rel="stylesheet" href="../css/style.css?v=20261016b">') + f'''
 <body id="top">
 {header()}
 
@@ -387,7 +387,7 @@ def packet(m):
         f'    <p style="margin-top:12px"><strong>{p}</strong></p>\n    <div class="lines">' + "<div></div>" * n + "</div>"
         for p, n in ws["plan"])
     return HEAD.format(title=f'Module {m["num"]} In-Class Packet · {strip_tags(m["title"])}',
-                       css='<link rel="stylesheet" href="../css/style.css">\n<link rel="stylesheet" href="../css/practice.css">') + f'''
+                       css='<link rel="stylesheet" href="../css/style.css?v=20261016b">\n<link rel="stylesheet" href="../css/practice.css?v=20261016b">') + f'''
 <body id="top">
 {header()}
 
