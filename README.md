@@ -13,7 +13,7 @@ Each course has 45 hours of content, 15 hours of job search support, and a 20-ho
 
 | File | Page |
 |---|---|
-| `index.html` | Home: both courses, the 80-hour breakdown, the career ladder, and pilot targets |
+| `index.html` | Home: both courses, the 80-hour breakdown, and the career ladder |
 | `getting-started.html` | Day one: accounts, Readiness Check, and ground rules |
 | `community-practitioner.html` | Course 1 overview and its 8 modules |
 | `survivor-workforce-facilitator.html` | Course 2 overview and its 8 modules |
