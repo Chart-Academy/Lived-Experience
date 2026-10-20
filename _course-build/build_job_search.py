@@ -229,8 +229,8 @@ finish(k, "J6", [
 with open(f"{OUT}/JS-Job-Search-Tracker.csv", "w", newline="", encoding="utf-8") as f:
     csv.writer(f).writerows([
         ["Date found", "Job title", "Employer", "Link", "Pay", "Schedule", "Fits must-haves? (Y/N)",
-         "Status (Saved / Applied / Interview / Offer / Not selected)", "Date applied", "Follow-up date", "Contact name", "Notes"],
-        ["", "Community Outreach Specialist", "Example Nonprofit", "", "", "Mon–Fri days", "Y", "Saved", "", "", "", ""],
+         "Status (Saved / Applied / Interview / Offer / Not selected)", "Date applied", "Follow-up date", "Interview date", "Offer date", "Contact name", "Notes"],
+        ["", "Community Outreach Specialist", "Example Nonprofit", "", "", "Mon–Fri days", "Y", "Saved", "", "", "", "", "", ""],
     ])
 print("saved JS-Job-Search-Tracker.csv")
 

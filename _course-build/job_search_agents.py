@@ -57,7 +57,8 @@ I can work: [days and hours]. I need at least: [pay].
 Use the listings I paste from Indeed, DC Government Careers, and nonprofit job boards, plus a web search for current human services openings in [the DC area], and return 10 openings that fit. For each: title, employer, pay if listed, link, and why it matches me.
 Mark openings that mention same-week interviews, open interviews, or immediate start as QUICK HIRE.
 Mark as SCAM any listing that asks for fees, bank details, or my Social Security number before an offer, or has no real employer.
-Never log in to a job site or apply for me. I do my own applying.""",
+Never log in to a job site or apply for me. I do my own applying.
+When I tell you I applied to one of these jobs, give me one line to paste into my Job Search Check-in: date applied | employer | job title | where I found it | QUICK HIRE yes or no | link.""",
         steps=["Search Indeed, DC Government Careers, and one nonprofit job board yourself. Copy the listings.",
                "Paste your skills profile and the listings into the agent.",
                "Check every ranking yourself against your must-haves. Open each link. The agent can be wrong.",
